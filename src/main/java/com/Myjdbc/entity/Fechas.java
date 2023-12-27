@@ -24,7 +24,5 @@ public class Fechas {
     private String hora;
     private String status;
 
-    public Fechas(String registro) {
 
-    }
 }

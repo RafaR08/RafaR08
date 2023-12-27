@@ -37,19 +37,4 @@ public class FechasRepository {
 
 
 
-    public List<Fechas> actualizarRegistros(int idFechas) {
-        // Aquí debes implementar la lógica específica para actualizar registros en tu base de datos.
-        // Puedes usar el JdbcTemplate para realizar operaciones SQL.
-
-        // Por ejemplo, supongamos que tienes una tabla llamada "registros" con columnas "id" y "estado",
-        // y quieres actualizar el estado de todos los registros a "Actualizado".
-
-        String sqlUpdate = "UPDATE FECHAS SET STATUS = 'ACTUALIZADO' WHERE  IDFECHAS = ? ";
-        jdbcTemplate.update(sqlUpdate,idFechas);
-
-        // Después de la actualización, puedes recuperar los registros actualizados si es necesario.
-        String sqlSelect = "SELECT * FROM FECHAS";
-        return jdbcTemplate.query(sqlSelect, new FechasRowMapper()); // Asume que tienes un RowMapper llamado RegistroMapper
-    }
-
 }
