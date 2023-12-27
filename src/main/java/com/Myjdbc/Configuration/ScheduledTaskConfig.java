@@ -99,10 +99,6 @@ public class ScheduledTaskConfig implements SchedulingConfigurer {
         taskManager.agregarRegistro(hora.getRegistros());
     }
 
-  // public void porHora(){repository.realizarAccionProgramada();}
-    //public  void porDia(){dia.ejecutarTareaDiarias();}
-  //  public  void porHora(){hora.ejecutarTareaPeriodica();}
-   // public  void porHora(){hora.run();}
 
 
 /*
