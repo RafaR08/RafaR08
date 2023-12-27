@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -26,9 +25,9 @@ public class EjecutarPorHora implements  Runnable {
 
     @Override
     public void run() {
-        LocalDateTime fechaActual =  LocalDateTime.now();
+        LocalDateTime fechaActual = LocalDateTime.now();
         DateTimeFormatter horaFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter  diaFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter diaFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         String horaActual = fechaActual.format(horaFormat);
         String diaActual = fechaActual.format(diaFormat);
@@ -38,10 +37,13 @@ public class EjecutarPorHora implements  Runnable {
             horarios.stream()
                     .filter(h ->   horaActual.equals(h.getHora()))//todo: aplicar predicate
                     .forEach(d->{
-                        logger.info("Tarea ejecutada para la hora " + horaActual +" id: "
+                        logger.info("Se han ingresado datos " + horaActual +" id: "
                                 + d.getIdCustomer());
-                        repository.actualizar(d.getIdFechas());
+                        //agregar tarea al taskManager
+                       // taskManager.addTask(d);
+
                     });
+
 
 
     }
