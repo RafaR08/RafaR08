@@ -19,8 +19,4 @@ public class CustomerController {
     @Autowired
     FechasServices fechaService;
 
-    @GetMapping("insertar")
-    public ResponseEntity<Object> createEmployee(@RequestBody Fechas fecha) {
-        return null;
-    }
 }

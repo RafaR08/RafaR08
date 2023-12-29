@@ -1,8 +1,8 @@
-package com.Myjdbc.impl;
+package com.Myjdbc.component;
 
-import com.Myjdbc.Repositiry.FechasRepository;
+import com.Myjdbc.DAO.FechasDAO;
+import com.Myjdbc.Repository.FechasRepository;
 import com.Myjdbc.entity.Fechas;
-import com.Myjdbc.tasks.TaskManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,9 @@ public class EjecutarPorHora implements  Runnable {
     @Autowired
     private  FechasRepository repository;
 
+    @Autowired
+    FechasDAO dao;
+
    @Autowired
   private  TaskManager taskManager;
 
@@ -33,19 +36,21 @@ public class EjecutarPorHora implements  Runnable {
         String diaActual = fechaActual.format(diaFormat);
 
 
-        List<Fechas> horarios = repository.obtenerHorarioPorDia(diaActual);
+        List<Fechas> horarios = //dao.findBydia(diaActual);
+                repository.obtenerHorarioPorDia(diaActual);
             horarios.stream()
                     .filter(h ->   horaActual.equals(h.getHora()))//todo: aplicar predicate
                     .forEach(d->{
                         logger.info("Se han ingresado datos " + horaActual +" id: "
                                 + d.getIdCustomer());
                         //agregar tarea al taskManager
-                       // taskManager.addTask(d);
+                        taskManager.addTask(d);
 
                     });
 
 
-
     }
+
+
 
 }

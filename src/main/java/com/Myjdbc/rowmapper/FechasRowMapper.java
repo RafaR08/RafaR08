@@ -1,4 +1,4 @@
-package com.Myjdbc.Repositiry;
+package com.Myjdbc.rowmapper;
 
 import com.Myjdbc.entity.Customer;
 import com.Myjdbc.entity.Fechas;

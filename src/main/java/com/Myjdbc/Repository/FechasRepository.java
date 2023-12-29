@@ -1,22 +1,22 @@
-package com.Myjdbc.Repositiry;
+package com.Myjdbc.Repository;
 
 import com.Myjdbc.entity.Fechas;
+import com.Myjdbc.component.TaskManager;
+import com.Myjdbc.rowmapper.FechasRowMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDate;
-import java.util.Date;
 import java.util.List;
 
 
-@Service
+@Repository
 public class FechasRepository {
+
+    private static final Logger logger = LoggerFactory.getLogger(TaskManager.class);
 
     @Autowired
     @Qualifier("PersonaIne")
@@ -28,11 +28,9 @@ public class FechasRepository {
     }
 
     public void actualizar(int idFechas) {
-
         String sql = "UPDATE FECHAS SET STATUS = 'ACTUALIZADO' WHERE  IDFECHAS = ? ";
-        //jdbcTemplate.update(sql,idCostumer,hora,dia);
         jdbcTemplate.update(sql,idFechas);
-        System.out.println("actualizacion correcta " + "idFecha: " + idFechas);
+        logger.info("actualizacion correcta " + "idFecha: " + idFechas);
     }
 
 
